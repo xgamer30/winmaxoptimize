@@ -32,7 +32,62 @@
             scrollbar-width: thin; /* Scrollbar width (auto, thin, none) */
         }
     </style>
-
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+     const purchaseButtons = document.querySelectorAll('.button-primary.small');  // Select all purchase buttons
+     const agreeTermsCheckbox = document.getElementById('agreeTerms');
+   
+     purchaseButtons.forEach(button => {
+       button.addEventListener('click', function (event) {
+         if (!agreeTermsCheckbox.checked) {
+           event.preventDefault(); // Prevent the button action
+           showErrorBubble('Please agree to the terms and conditions to proceed.');
+         } else {
+           window.location.href = 'https://winmaxoptimize.com/checkout.html'; // Redirect to the checkout page
+         }
+       });
+     });
+   
+     function showErrorBubble(message) {
+       const errorBubble = document.createElement('div');
+       errorBubble.textContent = message;
+       errorBubble.style.position = 'fixed';
+       errorBubble.style.top = '20px';
+       errorBubble.style.left = '50%';
+       errorBubble.style.transform = 'translateX(-50%)';
+       errorBubble.style.backgroundColor = 'red';
+       errorBubble.style.color = 'white';
+       errorBubble.style.padding = '10px 20px';
+       errorBubble.style.borderRadius = '5px';
+       errorBubble.style.zIndex = '1000';
+       errorBubble.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
+   
+       document.body.appendChild(errorBubble);
+   
+       // Remove the bubble after 3 seconds
+       setTimeout(() => {
+         document.body.removeChild(errorBubble);
+       }, 3000);
+     }
+   });
+   </script>
+   
+<style>
+   .error-bubble {
+     position: fixed;
+     top: 20px;
+     left: 50%;
+     transform: translateX(-50%);
+     background-color: red;
+     color: white;
+     padding: 10px 20px;
+     border-radius: 5px;
+     z-index: 1000;
+     box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+     display: none; /* Initially hidden */
+   }
+   </style>
+      
 <style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><script type="text/javascript" id="custom-useragent-string-page-script"></script><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style><style>
     /* Center the images container and ensure a consistent layout */
     .payment-logos {
@@ -338,19 +393,22 @@
               <div class="bg-gradient-blur-circle-2 purple"></div>
               <div class="bg-gradient-blur-circle-1 purple"></div>
            </div>
-        </div><div class="payment-logos" style="padding-top: 50px">
+        </div>
+              
+<div class="payment-logos" style="padding-top: 50px">
+        <div class="terms-checkbox" style="display: flex; align-items: center; justify-content: center;">
+        <input type="checkbox" id="agreeTerms" name="agreeTerms" style="vertical-align: middle; margin-bottom: 10px;">
+        <label for="agreeTerms" style="vertical-align: middle;">I agree to the <a href="URL_TO_TERMS">Terms and Conditions</a> and <a href="URL_TO_REFUND_POLICY">Refund Policy</a></label>
+        </div>
+</div>
+<div class="payment-logos" style="padding-top: 50px">
     <img src="https://raw.githubusercontent.com/datatrans/payment-logos/master/assets/cards/visa.svg?sanitize=true" alt="Visa">
     <img src="https://raw.githubusercontent.com/datatrans/payment-logos/master/assets/cards/mastercard.svg?sanitize=true" alt="Mastercard">
-    
-    
-    
-    
-    
     <img src="https://raw.githubusercontent.com/datatrans/payment-logos/master/assets/apm/giropay.svg?sanitize=true" alt="giropay">
-    
-    
-    
-</div></section>
+</div>
+      
+      
+      </section>
       
       
       
