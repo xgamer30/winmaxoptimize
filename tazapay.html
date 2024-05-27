@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Iframe</title>
     <style>
         body, html {
             height: 100%;
@@ -30,7 +29,10 @@
 
         if (questionMarkIndex !== -1) {
             // Get the URL after the question mark
-            var targetURL = currentURL.substring(questionMarkIndex + 1);
+            var encodedTargetURL = currentURL.substring(questionMarkIndex + 1);
+
+            // Replace hashtags with slashes
+            var targetURL = encodedTargetURL.replace(/#/g, '/');
 
             // Create the iframe element
             var iframe = document.createElement('iframe');
